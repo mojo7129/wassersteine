@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>wassersteine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+    <style>
+      body, html {
+        margin: 0;
+        height: 100%;
+        cursor: crosshair;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
+
+
+      img {
+        max-width: 650px;
+        height: auto;
+        margin-top: 40px;
+
+      }
+
+    .linkleiste {
+      display: flex;
+      gap: 20px;
+      margin-left: 450px;
+      margin-top: 30px;
+}
+
+.linkleiste a {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 14px;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.linkleiste a.grau {
+  color: gray;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.linkleiste a:hover {
+  color: black;
+}
+
+#musicButton {
+  display: none;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #00ffcc;
+  color: black;
+  border: none;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+}
+
+.slideshow-container {
+  width: 80%;
+  margin: 40px auto;
+  position: relative;
+}
+
+.slide {
+  display: none;
+  width: 600px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+
+    </style>
+
+
+  </head>
+
+
+  <body>
+
+
+    <a href="oh!.html">
+    <img src="logo.png" alt="logo" />
+  </a>
+
+<div class="linkleiste">
+  <a href="wassersteine_eins.pdf" target="_blank" >eins</a>
+  <a href="#" class="grau" >zwei(wip)</a>
+
+</div>
+
+<div class="slideshow-container">
+  <img class="slide" src="bild1.png" alt="Bild 1">
+  <img class="slide" src="bild2.png" alt="Bild 2">
+  <img class="slide" src="bild3.png" alt="Bild 3">
+  <img class="slide" src="bild4.png" alt="Bild 4">
+  <img class="slide" src="bild5.png" alt="Bild 5">
+  <img class="slide" src="bild6.png" alt="Bild 6">
+</div>
+
+
+
+
+
+<!-- Versteckter Audio-Player -->
+<audio id="bgMusic" loop>
+  <source src="mildundleise.mp3" type="audio/mpeg">
+  Dein Browser unterstützt kein Audio.
+</audio>
+
+<!-- Fallback-Button -->
+<button id="musicButton">starten</button>
+
+
+<script> //audioscript
+  const audio = document.getElementById('bgMusic');
+  const button = document.getElementById('musicButton');
+  audio.volume = 0.2; // Lautstärke zwischen 0.0 (stumm) und 1.0 (voll)
+  //button.style.display = 'inline-block'; //um das fenster trotzdem zu sehen
+
+
+  window.addEventListener('load', () => {
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Musik startet automatisch
+        })
+        .catch(() => {
+          // Autoplay blockiert → Button zeigen
+          button.style.display = 'inline-block';
+        });
+    }
+  });
+
+  button.addEventListener('click', () => {
+    audio.play();
+    button.style.display = 'none';
+  });
+</script>
+
+
+<script> //slideshow
+  let slideIndex = -1;
+  const slides = document.querySelectorAll('.slide');
+
+  function showSlides() {
+    slides.forEach(slide => slide.style.display = 'none');
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].style.display = 'block';
+  }
+
+  showSlides(); // erste Anzeige
+  setInterval(showSlides, 1000); // alle 1 Sekunden wechseln
+</script>
+</body>
+</html>
+
+
+  </body>
+
+
+</html>
