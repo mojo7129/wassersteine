@@ -53,14 +53,18 @@
 }
 
 #musicButton {
-  display: none;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #00ffcc;
-  color: black;
-  border: none;
-  font-family: 'Press Start 2P', monospace;
-  cursor: pointer;
+  position: fixed;
+ top: 30%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ padding: 10px 20px;
+ // background: #00ffcc;
+ background: #ff29df;
+ color: black;
+ border: none;
+ font-family: 'Press Start 2P', monospace;
+ cursor: pointer;
+ z-index: 1000;
 }
 
 .slideshow-container {
@@ -77,16 +81,9 @@
   margin-right: auto;
 }
 
-
-
-
-
-
     </style>
 
-
   </head>
-
 
   <body>
 
@@ -95,13 +92,13 @@
     <img src="logo.png" alt="logo" />
   </a>
 
-<div class="linkleiste">
+<div class="linkleiste" style="display: none;">
   <a href="wassersteine_eins.pdf" target="_blank" >eins</a>
   <a href="#" class="grau" >zwei(wip)</a>
 
 </div>
 
-<div class="slideshow-container">
+<div class="slideshow-container" style="display: none;">
   <img class="slide" src="bild1.png" alt="Bild 1">
   <img class="slide" src="bild2.png" alt="Bild 2">
   <img class="slide" src="bild3.png" alt="Bild 3">
@@ -113,59 +110,47 @@
 
 
 
-
-<!-- Versteckter Audio-Player -->
 <audio id="bgMusic" loop>
   <source src="mildundleise.mp3" type="audio/mpeg">
   Dein Browser unterstützt kein Audio.
 </audio>
 
-<!-- Fallback-Button -->
-<button id="musicButton">starten</button>
+<!-- Musikbutton -->
+<button id="musicButton">beruehren</button>
 
 
 <script> //audioscript
-  const audio = document.getElementById('bgMusic');
-  const button = document.getElementById('musicButton');
-  audio.volume = 0.2; // Lautstärke zwischen 0.0 (stumm) und 1.0 (voll)
-  //button.style.display = 'inline-block'; //um das fenster trotzdem zu sehen
+const audio = document.getElementById('bgMusic');
+const button = document.getElementById('musicButton');
+const slideshow = document.querySelector('.slideshow-container');
+const slides = document.querySelectorAll('.slide');
+let slideIndex = -1;
+let slideInterval;
 
+audio.volume = 0.3;
 
-  window.addEventListener('load', () => {
-    const playPromise = audio.play();
+function showSlides() {
+  slides.forEach(slide => slide.style.display = 'none');
+  slideIndex = (slideIndex + 1) % slides.length;
+  slides[slideIndex].style.display = 'block';
+}
 
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Musik startet automatisch
-        })
-        .catch(() => {
-          // Autoplay blockiert → Button zeigen
-          button.style.display = 'inline-block';
-        });
-    }
-  });
+// Button klick
+const linkleiste = document.querySelector('.linkleiste');
+button.addEventListener('click', () => {
+  audio.play();
+  button.style.display = 'none';
+  slideshow.style.display = 'block';  // Slideshow anzeigen
+  linkleiste.style.display = 'flex'; // linkleiste anzeigen
 
-  button.addEventListener('click', () => {
-    audio.play();
-    button.style.display = 'none';
-  });
-</script>
-
-
-<script> //slideshow
-  let slideIndex = -1;
-  const slides = document.querySelectorAll('.slide');
-
-  function showSlides() {
-    slides.forEach(slide => slide.style.display = 'none');
-    slideIndex = (slideIndex + 1) % slides.length;
-    slides[slideIndex].style.display = 'block';
-  }
-
+  // Slideshow starten
   showSlides(); // erste Anzeige
-  setInterval(showSlides, 1000); // alle 1 Sekunden wechseln
+  slideInterval = setInterval(showSlides, 1000);
+});
+
 </script>
+
+
 </body>
 </html>
 
