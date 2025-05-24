@@ -1,0 +1,24 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: white;
+    font-family: 'Press Start 2P', Arial, sans-serif;
+    text-align: center;
+}
+
+img {
+    max-width: 650px;
+    height: auto;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.textblock {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 0 20px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: blue;
+}
