@@ -5,7 +5,7 @@ const slides = document.querySelectorAll('.slide');
 let slideIndex = -1;
 let slideInterval;
 
-audio.volume = 0.3;
+audio.volume = 0.5;
 
 function showSlides() {
     slides.forEach(slide => slide.style.display = 'none');
