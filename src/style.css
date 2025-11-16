@@ -83,6 +83,10 @@ img {
     50% { opacity: 0; }
 }
 
+ .blink {
+    animation: blinken 1s steps(2, start) infinite;
+}
+
 @media (max-width: 800px) {
     img {
         max-width: 100%;
@@ -144,12 +148,7 @@ img {
         margin: 0;
     }
 
-    .blink {
-    animation: blinken 1s steps(2, start) infinite;
-}
-
-
-
+   
  
 }
 
