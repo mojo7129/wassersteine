@@ -24,4 +24,10 @@ button.addEventListener('click', () => {
     // Slideshow starten
     showSlides(); // erste Anzeige
     slideInterval = setInterval(showSlides, 1000);
+    
+ // Beispiel: füge die Klasse nach dem Anzeigen hinzu
+let linkleiste = document.querySelector('.linkleiste');
+linkleiste.style.display = 'block';
+let dreiButton = linkleiste.querySelector('.blink');
+dreiButton.classList.add('blink'); // Animation startet JETZT
 });
