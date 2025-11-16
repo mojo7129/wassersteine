@@ -78,6 +78,11 @@ img {
     color: blue;
 }
 
+@keyframes blinken {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 @media (max-width: 800px) {
     img {
         max-width: 100%;
@@ -148,7 +153,4 @@ img {
  
 }
 
-@keyframes blinken {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
+
