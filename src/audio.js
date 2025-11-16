@@ -25,9 +25,13 @@ button.addEventListener('click', () => {
     showSlides(); // erste Anzeige
     slideInterval = setInterval(showSlides, 1000);
     
- // Beispiel: füge die Klasse nach dem Anzeigen hinzu
-let linkleiste = document.querySelector('.linkleiste');
-linkleiste.style.display = 'block';
-let dreiButton = linkleiste.querySelector('.blink');
-dreiButton.classList.add('blink'); // Animation startet JETZT
+
+});
+
+document.getElementById('musicButton').addEventListener('click', function() {
+    // Linkleiste sichtbar machen
+    document.querySelector('.linkleiste').style.display = 'block';
+
+    // "drei"-Button bekommt die Blink-Klasse
+    document.getElementById('dreiButton').classList.add('blink');
 });
