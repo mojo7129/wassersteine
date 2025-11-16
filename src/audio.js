@@ -21,6 +21,7 @@ button.addEventListener('click', () => {
     slideshow.style.display = 'block';  // Slideshow anzeigen
     linkleiste.style.display = 'flex'; // linkleiste anzeigen
 
+    document.getElementById('dreiButton').classList.add('blink');
     // Slideshow starten
     showSlides(); // erste Anzeige
     slideInterval = setInterval(showSlides, 1000);
@@ -28,10 +29,6 @@ button.addEventListener('click', () => {
 
 });
 
-document.getElementById('musicButton').addEventListener('click', function() {
-    // Linkleiste sichtbar machen
-    document.querySelector('.linkleiste').style.display = 'block';
 
-    // "drei"-Button bekommt die Blink-Klasse
-    document.getElementById('dreiButton').classList.add('blink');
-});
+
+
