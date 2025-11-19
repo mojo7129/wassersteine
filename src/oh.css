@@ -22,3 +22,18 @@ img {
     line-height: 1.8;
     color: blue;
 }
+
+#musicButton {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    // background: #00ffcc;
+    background: #ff29df;
+    color: black;
+    border: none;
+    font-family: 'Press Start 2P', monospace;
+    cursor: pointer;
+    z-index: 1000;
+}
